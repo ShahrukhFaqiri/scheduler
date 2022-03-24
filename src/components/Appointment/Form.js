@@ -35,8 +35,6 @@ export default function Form(props) {
             onChange={(event) => { setStudent(event.target.value); }}
           />
         </form>
-
-
         <InterviewerList
           interviewers={props.interviewers}
           onChange={setInterviewer}
