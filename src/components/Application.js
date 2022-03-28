@@ -1,6 +1,7 @@
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
+import useVisualMode from "hooks/useVisualMode";
 import { getAppointmentsForDay, getInterview } from "helpers/selectors";
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
@@ -19,6 +20,7 @@ export default function Application(props) {
       axios.get(`${host}/appointments`),
       axios.get(`${host}/interviewers`)
     ]).then((all)=> {
+      console.log(all[2].data)
       setState(prev => ({...prev,
         days: all[0].data,
         appointments: all[1].data,
