@@ -18,7 +18,6 @@ export function getInterviewersForDay(state, day) {
   return interviewerArr.map(id => state.interviewers[id]);
 };
 
-
 export function getInterview(state, interview) {
   if (!interview) return null;
   return { 
