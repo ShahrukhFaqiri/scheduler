@@ -11,10 +11,12 @@ export default function useVisualMode(init) {
     }
     setMode(newMode);
   };
+
   const back = () => {
     if (history.length < 2) return;
     setHistory(history.slice(1));
     setMode(history.slice(1)[0]);
   };
+  
   return { mode, transition, back };
 }
