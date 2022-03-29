@@ -1,6 +1,7 @@
 import React from "react";
 import Show from "./Show";
 import Form from "./Form";
+import Error from "./Error";
 import Empty from "./Empty";
 import Status from "./Status";
 import Header from "./Header";
@@ -16,6 +17,8 @@ export default function Appointment(props) {
   const DELETING = "DELETING";
   const CONFIRM = "CONFIRM";
   const EDIT = "EDIT";
+  const ERROR_SAVE = "ERROR_SAVE";
+  const ERROR_DELETE = "ERROR_DELETE";
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
@@ -29,14 +32,16 @@ export default function Appointment(props) {
     props.bookInterview(props.id, interview)
       .then(() => {
         transition(SHOW);
-      });
+      })
+      .catch(error => transition(ERROR_SAVE, true));
   };
 
   const remove = (id) => {
-    transition(DELETING);
+    transition(DELETING, true)
     props.cancelInterview(props.id).then(() => {
       transition(EMPTY);
-    });
+    })
+      .catch(error => transition(ERROR_DELETE, true));
   };
 
 
@@ -64,7 +69,9 @@ export default function Appointment(props) {
         {mode === CONFIRM && (
           <Confirm
             message="Confirm Delete:"
-            onConfirm={() => remove(props.id)} />
+            onConfirm={() => remove(props.id)}
+            onCancel={back}
+             />
         )}
         {mode === EDIT && (
           <Form
@@ -81,6 +88,12 @@ export default function Appointment(props) {
         {mode === DELETING && (
           <Status
             message="Deleting..." />)}
+        {mode === ERROR_SAVE && (
+          <Error message="There was an error saving!" onClose={back} />
+        )}
+        {mode === ERROR_DELETE && (
+          <Error message="There was an error deleting!" onClose={back} />
+        )}
       </article>
     </>
   );
