@@ -1,7 +1,6 @@
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "./Appointment";
-import useVisualMode from "hooks/useVisualMode";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
@@ -58,7 +57,6 @@ export default function Application(props) {
     return axios.delete(`/api/appointments/${id}`).then(() => {
       setState({ ...state, appointments });
     });
-
   }
 
   const setDay = day => setState({ ...state, day });
