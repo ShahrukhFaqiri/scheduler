@@ -9,6 +9,9 @@ export function getAppointmentsForDay(state, day) {
 };
 
 export function getInterviewersForDay(state, day) {
+   if (state.days.length === 0) {
+    return [];
+  }
   let interviewerArr = [];
   state.days.forEach(singleDay => {
     if (singleDay.name === day) {
