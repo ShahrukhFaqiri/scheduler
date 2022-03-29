@@ -13,7 +13,6 @@ export default function Application(props) {
     appointments: {}
   });
 
-  const host = `http://localhost:8001/api`;
   useEffect(() => {
     Promise.all([
       axios.get(`/api/days`),
