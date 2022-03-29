@@ -3,8 +3,7 @@ import "components/Application.scss";
 import Appointment from "./Appointment";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors";
 import useApplicationData from "hooks/useApplicationData";
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
 
 export default function Application(props) {
   const { state, setDay, cancelInterview, bookInterview } = useApplicationData();
