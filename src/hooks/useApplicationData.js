@@ -5,7 +5,7 @@ export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
   });
 
   useEffect(() => {
@@ -34,7 +34,18 @@ export default function useApplicationData() {
     };
     return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
       setState({ ...state, appointments });
+      updateSpots(-1);
     });
+  };
+
+  const updateSpots = (num) => {
+    state.days.map((item) => {
+      if (item.name === state.day) {
+        console.log(item.spots);
+        return { ...item, spots: item.spots + num };
+      }
+    });
+
   };
 
   const cancelInterview = (id) => {
@@ -48,6 +59,7 @@ export default function useApplicationData() {
     };
     return axios.delete(`/api/appointments/${id}`).then(() => {
       setState({ ...state, appointments });
+      updateSpots(1);
     });
   };
 
