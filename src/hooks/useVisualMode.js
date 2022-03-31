@@ -1,5 +1,8 @@
 import { React, useState } from "react";
-
+/* 
+1) Transition through the different modes for dynamic display 
+2) back/cancel 
+*/
 export default function useVisualMode(init) {
   const [mode, setMode] = useState(init);
   const [history, setHistory] = useState([init]);
@@ -17,6 +20,6 @@ export default function useVisualMode(init) {
     setHistory(history.slice(1));
     setMode(history.slice(1)[0]);
   };
-  
+
   return { mode, transition, back };
 }

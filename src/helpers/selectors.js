@@ -1,3 +1,12 @@
+/* 
+Helper functions for data display
+
+1) return an array of appointsment for that day
+2) return an array of interviewers for that day
+3) return object of student and interview
+*/
+
+
 export function getAppointmentsForDay(state, day) {
   let dayArr = [];
   state.days.forEach(singleDay => {
