@@ -2,8 +2,13 @@
 
 Interview Scheduler is a single page app that allows students of lighthouse labs to book an interview with mentors.
 
+1) Booking an interview
 !["Booking an interview"](https://github.com/ShahrukhFaqiri/scheduler/blob/master/docs/1.gif)
-!["Deleting and Editing interview"](https://github.com/ShahrukhFaqiri/scheduler/blob/master/docs/1.gif)
+
+2) Deleting and Editing interview
+!["Deleting and Editing interview"](https://github.com/ShahrukhFaqiri/scheduler/blob/master/docs/2.gif)
+
+3) Testing with Cypress
 !["End to End testing with Cypress"](https://github.com/ShahrukhFaqiri/scheduler/blob/master/docs/3.png)
 
 ## Setup
