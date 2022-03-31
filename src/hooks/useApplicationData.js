@@ -23,7 +23,7 @@ export default function useApplicationData() {
     });
   }, []);
 
-  const bookInterview = (id, interview) => {
+  const bookInterview = (id, interview, mode) => {
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -33,19 +33,15 @@ export default function useApplicationData() {
       [id]: appointment
     };
     return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
-      setState({ ...state, appointments });
-      updateSpots(-1);
+      let days = (mode === "CREATE") ? updateSpots(-1) : state.days;
+      setState({ ...state, appointments, days });
     });
   };
 
   const updateSpots = (num) => {
-    state.days.map((item) => {
-      if (item.name === state.day) {
-        console.log(item.spots);
-        return { ...item, spots: item.spots + num };
-      }
+    return state.days.map((item) => {
+      return {...item, spots: item.name === state.day ? (item.spots + num) : (item.spots)}
     });
-
   };
 
   const cancelInterview = (id) => {
@@ -58,8 +54,8 @@ export default function useApplicationData() {
       [id]: appointment
     };
     return axios.delete(`/api/appointments/${id}`).then(() => {
-      setState({ ...state, appointments });
-      updateSpots(1);
+      const days = updateSpots(1);
+      setState({ ...state, appointments, days });
     });
   };
 
