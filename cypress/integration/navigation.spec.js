@@ -1,3 +1,9 @@
+/* 
+Navigation Test
+1) Goes to root
+2) Check to see if you can navigate to different days
+*/
+
 describe("Navigation", () => {
   it("should visit root", () => {
     cy.visit("/");
