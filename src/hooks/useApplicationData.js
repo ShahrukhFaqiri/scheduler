@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+/* 
+1) Handling Server Requests.
+2) Booking Interviewers
+3) Cancel/Delete Interviews
+4) Dinamically update spots
+*/
+
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
