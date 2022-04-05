@@ -33,6 +33,16 @@ npm test
 npm run storybook
 ```
 
+## Schedueler-API set up for the server
+```sh
+CLONE: https://github.com/ShahrukhFaqiri/scheduler-api
+```
+
+## Start the DB
+```sh
+npm start
+```
+
 ## Dependencies
 
 ```sh
